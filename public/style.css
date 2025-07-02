@@ -1,8 +1,141 @@
-body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-#form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
-#input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
-#input:focus { outline: none; }
-#form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
-#messages { list-style-type: none; margin: 0; padding: 0; }
-#messages > li { padding: 0.5rem 1rem; }
-#messages > li:nth-child(odd) { background: #efefef; }
+/* ---- VARIABLES ET STYLES DE BASE ---- */
+:root {
+    --bg-color: #f0f2f5;
+    --header-bg: #00a884; /* Vert WhatsApp */
+    --my-message-bg: #d9fdd3; /* Vert clair de mes messages */
+    --other-message-bg: #ffffff;
+    --text-color: #111b21;
+    --secondary-text-color: #667781;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* ---- CONTENEUR PRINCIPAL ---- */
+.chat-container {
+    width: 100%;
+    max-width: 600px; /* Un peu plus large */
+    height: 95vh;
+    max-height: 800px;
+    background: #e5ddd5; /* Fond "WhatsApp" */
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+/* ---- EN-TÊTE ---- */
+.chat-header {
+    background-color: var(--header-bg);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.chat-header h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
+/* ---- ZONE DES MESSAGES ---- */
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ---- STYLE DE CHAQUE BULLE DE MESSAGE ---- */
+.message {
+    background: var(--other-message-bg);
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    max-width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    word-wrap: break-word;
+}
+
+.message .meta {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--header-bg);
+    margin-bottom: 5px;
+}
+
+.message .text {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.message.my-message {
+    background: var(--my-message-bg);
+    align-self: flex-end; /* Aligne à droite */
+}
+
+.message.my-message .meta {
+    display: none; /* Pas besoin d'afficher mon propre nom */
+}
+
+
+/* ---- ZONE DE SAISIE ---- */
+.chat-form-container {
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+}
+
+#chat-form {
+    display: flex;
+    align-items: center;
+}
+
+#chat-form input {
+    flex-grow: 1;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 25px;
+    font-size: 1rem;
+}
+
+#chat-form input:focus {
+    outline: none;
+}
+
+#chat-form .btn {
+    background-color: var(--header-bg);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chat-form .btn svg {
+    color: white;
+    fill: white;
+}
