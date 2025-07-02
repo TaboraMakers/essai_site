@@ -3,18 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat en Temps Réel</title>
+    <title>Mon Nouveau Chat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-        <input id="input" autocomplete="off" /><button>Envoyer</button>
-    </form>
 
-    <!-- Script de Socket.IO fourni par le serveur -->
+    <div class="chat-container">
+
+        <header class="chat-header">
+            <h1>Groupe Général</h1>
+            <!-- On pourra ajouter un compteur d'utilisateurs ici plus tard -->
+        </header>
+
+        <main class="chat-messages" id="chat-messages">
+            <!-- Les messages apparaîtront ici -->
+        </main>
+
+        <footer class="chat-form-container">
+            <form id="chat-form">
+                <input
+                    id="msg"
+                    type="text"
+                    placeholder="Écrivez votre message..."
+                    required
+                    autocomplete="off"
+                />
+                <button type="submit" class="btn">
+                    <!-- Icône d'envoi (SVG) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </form>
+        </footer>
+
+    </div>
+
+    <!-- Scripts JS -->
     <script src="/socket.io/socket.io.js"></script>
-    <!-- Notre script personnalisé -->
     <script src="script.js"></script>
 </body>
 </html>
